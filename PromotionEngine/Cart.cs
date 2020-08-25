@@ -21,10 +21,7 @@ namespace PromotionEngine
         {
 
         }
-        //public IPromotion GetPromoObject(IPromotion IPromo)
-        //{
-        //    return _IPromo = IPromo;
-        //}
+
         public void AddProducttoCart(Product Prod)
         {
             CartProducts.Add(Prod);
@@ -45,32 +42,22 @@ namespace PromotionEngine
             Product prodC = new ProductC("C");
             Product prodD = new ProductD("D");
             int Total = 0;
-            foreach (Product CP in CartProducts)
-            {
-                if (CP.GetType().Name == "ProductA")
-                {
-                    NoOfA++;
-                }
-                if (CP.GetType().Name == "ProductB")
-                {
-                    NoOfB++;
-                }
-                if (CP.GetType().Name == "ProductC")
-                {
-                    NoOfC++;
-                }
-                if (CP.GetType().Name == "ProductD")
-                {
-                    NoOfD++;
-                }
-            }
+            Factory factory;
+            FactoryCD factoryCD;
+
+            NoOfA = CartProducts.Where(n => n.ProductCode == "A").Count();
+            NoOfB = CartProducts.Where(n=>n.ProductCode == "B").Count();
+            NoOfC = CartProducts.Where(n => n.ProductCode == "C").Count();
+            NoOfD = CartProducts.Where(n => n.ProductCode == "D").Count();
+
             if (NoOfA > 2)
             {
                 int promopairs = 0;
                 int remainitems = 0;
                 remainitems = NoOfA % 3;
                 promopairs = NoOfA / 3;
-                _IPromo = new PromotionA();
+                factory = new FactoryA();
+                _IPromo = factory.CreatePromotion();
                 Total = Total + _IPromo.Calculate(NoOfA, promopairs, remainitems);
                 promoA = true;
             }
@@ -80,7 +67,8 @@ namespace PromotionEngine
                 int remainitems = 0;
                 remainitems = NoOfB % 2;
                 promopairs = NoOfB / 2;
-                _IPromo = new PromotionB();
+                factory = new FactoryB();
+                _IPromo = factory.CreatePromotion();
                 Total = Total + _IPromo.Calculate(NoOfB, promopairs, remainitems);
                 promoB = true;
             }
@@ -108,7 +96,8 @@ namespace PromotionEngine
                     remainitemsC = 0;
                     remainitemsD = NoOfD - NoOfC;
                 }
-                _IPromoCD = new PromotionCD();
+                factoryCD = new FactoryPromoCD();
+                _IPromoCD = factoryCD.CreatePromotionCD();
                 Total = Total + _IPromoCD.Calculate(NoOfC, NoOfD, promopairs, remainitemsC, remainitemsD);
                 promoC = true;
                 promoD = true;
@@ -117,27 +106,27 @@ namespace PromotionEngine
             {
                 if (prod.GetType().Name == "ProductA" && promoA == false)
                 {                    
-                    Console.WriteLine("{0} * A {1}", NoOfA, (NoOfA * prodA._price));
+                    Console.WriteLine("{0} * A {1}", NoOfA, (NoOfA * prodA.price));
                     promoA = true;
-                    Total = Total + (NoOfA * prodA._price);
+                    Total = Total + (NoOfA * prodA.price);
                 }
                 else if (prod.GetType().Name == "ProductB" && promoB == false)
                 {
-                    Console.WriteLine("{0} * B {1}", NoOfB, (NoOfB * prodB._price));
+                    Console.WriteLine("{0} * B {1}", NoOfB, (NoOfB * prodB.price));
                     promoB = true;
-                    Total = Total + (NoOfB * prodB._price);
+                    Total = Total + (NoOfB * prodB.price);
                 }
                 else if (prod.GetType().Name == "ProductC" && promoC == false)
                 {
-                    Console.WriteLine("{0} * C {1}", NoOfC, (NoOfC * prodC._price));
+                    Console.WriteLine("{0} * C {1}", NoOfC, (NoOfC * prodC.price));
                     promoC = true;
-                    Total = Total + (NoOfC * prodC._price);
+                    Total = Total + (NoOfC * prodC.price);
                 }
                 else if (prod.GetType().Name == "ProductD" && promoD == false)
                 {
-                    Console.WriteLine("{0} * D {1}", NoOfD, (NoOfD * prodD._price));
+                    Console.WriteLine("{0} * D {1}", NoOfD, (NoOfD * prodD.price));
                     promoD = true;
-                    Total = Total + (NoOfD * prodD._price);
+                    Total = Total + (NoOfD * prodD.price);
                 }
             }
             return Total;
