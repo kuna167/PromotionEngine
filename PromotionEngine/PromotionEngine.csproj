@@ -46,16 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cart.cs" />
-    <Compile Include="Factory.cs" />
-    <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Promotion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PromotionEngine.BusinessLogic\PromotionEngine.BusinessLogic.csproj">
+      <Project>{48aa9e9e-4de0-4105-8ddd-4764ab2bcc09}</Project>
+      <Name>PromotionEngine.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PromotionEngine.Contracts\PromotionEngine.Contracts.csproj">
+      <Project>{c9effa38-c6d6-49af-b3c3-fc9b57558b88}</Project>
+      <Name>PromotionEngine.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PromotionEngine.Models\PromotionEngine.Models.csproj">
+      <Project>{f38fb8ec-ad94-4640-b0c7-33ebcf266ae9}</Project>
+      <Name>PromotionEngine.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

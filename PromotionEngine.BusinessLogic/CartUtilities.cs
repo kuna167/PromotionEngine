@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
+using PromotionEngine.Contracts;
+using PromotionEngine.Models;
 
-namespace PromotionEngine
+namespace PromotionEngine.BusinessLogic
 {
-    interface ICart
-    {
-        int ApplyPromotion();
-        void AddProducttoCart(Product Prod);
-    }
-
-    class Cart : ICart
+    public class CartUtilities:ICart
     {
         IPromotion _IPromo;
         IPromotionCD _IPromoCD;
         List<Product> CartProducts = new List<Product>();
-        public Cart()
+        public CartUtilities()
         {
 
         }
@@ -27,8 +22,8 @@ namespace PromotionEngine
             CartProducts.Add(Prod);
         }
 
-        public int ApplyPromotion()
-        {            
+        public int DisplayTotalAmountwithProducts()
+        {
             int NoOfA = 0;
             int NoOfB = 0;
             int NoOfC = 0;
@@ -46,7 +41,7 @@ namespace PromotionEngine
             FactoryCD factoryCD;
 
             NoOfA = CartProducts.Where(n => n.ProductCode == "A").Count();
-            NoOfB = CartProducts.Where(n=>n.ProductCode == "B").Count();
+            NoOfB = CartProducts.Where(n => n.ProductCode == "B").Count();
             NoOfC = CartProducts.Where(n => n.ProductCode == "C").Count();
             NoOfD = CartProducts.Where(n => n.ProductCode == "D").Count();
 
@@ -105,7 +100,7 @@ namespace PromotionEngine
             foreach (Product prod in CartProducts)
             {
                 if (prod.GetType().Name == "ProductA" && promoA == false)
-                {                    
+                {
                     Console.WriteLine("{0} * A {1}", NoOfA, (NoOfA * prodA.price));
                     promoA = true;
                     Total = Total + (NoOfA * prodA.price);

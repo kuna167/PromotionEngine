@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PromotionEngine
+namespace PromotionEngine.Models
 {
-    class Product
+    public class Product
     {
         public string ProductCode { get; set; }
         public int price { get; set; }
     }
-    class ProductA : Product
+    public class ProductA : Product
     {
         public ProductA(string SKU)
         {
@@ -19,7 +17,7 @@ namespace PromotionEngine
             price = 50;
         }
     }
-    class ProductB : Product
+    public class ProductB : Product
     {
         public ProductB(string SKU)
         {
@@ -27,7 +25,7 @@ namespace PromotionEngine
             price = 30;
         }
     }
-    class ProductC : Product
+    public class ProductC : Product
     {
         public ProductC(string SKU)
         {
@@ -35,7 +33,7 @@ namespace PromotionEngine
             price = 20;
         }
     }
-    class ProductD : Product
+    public class ProductD : Product
     {
         public ProductD(string SKU)
         {

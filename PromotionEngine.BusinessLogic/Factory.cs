@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using PromotionEngine.Contracts;
 
-namespace PromotionEngine
+namespace PromotionEngine.BusinessLogic
 {
     abstract class Factory
     {
@@ -14,7 +13,7 @@ namespace PromotionEngine
     {
         public abstract IPromotionCD CreatePromotionCD();
     }
-    class FactoryA:Factory
+    class FactoryA : Factory
     {
         public override IPromotion CreatePromotion()
         {
