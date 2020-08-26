@@ -40,8 +40,8 @@ namespace PromotionEngine.BusinessLogic
         {
             int totalCD = 0;
             Console.WriteLine("{0} * C {1}", NoOfItemsC, remainitemsC * prodC.price);
-            Console.WriteLine("{0} * D {1}", NoOfItemsD, (promopairs * 30) + (remainitemsC * prodD.price));
-            totalCD = (remainitemsC * prodC.price) + (promopairs * 30) + (remainitemsC * prodD.price);
+            Console.WriteLine("{0} * D {1}", NoOfItemsD, (promopairs * 30) + (remainitemsD * prodD.price));
+            totalCD = (remainitemsC * prodC.price) + (promopairs * 30) + (remainitemsD * prodD.price);
             return totalCD;
         }
     }
