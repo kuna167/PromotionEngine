@@ -11,7 +11,7 @@ namespace PromotionEngine.BusinessLogic
     {
         IPromotion _IPromo;
         IPromotionCD _IPromoCD;
-        List<Product> CartProducts = new List<Product>();
+        public List<Product> CartProducts = new List<Product>();
         public CartUtilities()
         {
 
